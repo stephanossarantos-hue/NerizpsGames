@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d18"><title>NerizpsGames — 2D Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+ <a class="brand" href="#"><span class="brand-mark">N</span><span>Nerizps<span class="brand-accent">Games</span><small>2D CREATOR STUDIO</small></span></a>
+ <div class="side-label">WORKSPACE</div>
+ <button class="nav active" data-view="editor"><span>✳</span> Studio</button>
+ <button class="nav" data-view="projects"><span>▣</span> My projects <b id="projectCount">0</b></button>
+ <button class="nav" data-view="profile"><span>◉</span> Creator profile</button>
+ <div class="side-bottom"><div class="mini-card"><span class="online-dot"></span><div><b>Studio ready</b><small>Your ideas, your games.</small></div></div><small class="version">NERIZPSGAMES • v1.0</small></div>
+</aside>
+<main class="main">
+<header class="topbar"><button class="mobile-menu" id="menuBtn">☰</button><div class="crumb">Workspace <span>/</span> <b id="crumbName">Studio</b></div><div class="top-actions"><button class="icon-btn" id="gearBtn" title="Settings">⚙</button><button class="avatar" id="avatarTop">N</button></div></header>
+<section class="view active" id="editorView">
+ <div class="welcome"><div><div class="eyebrow"><span class="pulse"></span> YOUR CREATIVE SPACE</div><h1>Make something <span>playable.</span></h1><p>Build a tiny 2D world, customize it, then take it with you.</p></div><button class="primary" id="newGameBtn">＋ New game</button></div>
+ <div class="editor-grid">
+  <section class="panel editor-panel">
+   <div class="panel-head"><div><span class="eyebrow">GAME WORKSPACE</span><h2 id="editorTitle">Untitled adventure</h2></div><span class="status"><i></i> EDITING</span></div>
+   <div class="item-toolbar"><span>ADD TO LEVEL</span><button class="item-btn active" data-item="select">↖ Select</button><button class="item-btn" data-item="platform">▰ Platform</button><button class="item-btn" data-item="coin">◉ Coin</button><button class="item-btn" data-item="star">★ Star</button><button class="item-btn" data-item="crate">▣ Crate</button><button class="item-btn" data-item="spike">▲ Obstacle</button><button class="item-btn erase" data-item="erase">⌫ Erase</button></div>
+   <div class="canvas-wrap"><canvas id="gameCanvas" width="900" height="500"></canvas><div class="canvas-hint" id="canvasHint">▶ Preview your world</div></div>
+   <div class="canvas-actions"><button class="secondary" id="playBtn">▶ Play preview</button><button class="secondary" id="resetBtn">↺ Reset</button><span class="hint-text">Drag objects in the editor by changing the settings</span></div>
+  </section>
+  <aside class="panel inspector">
+   <div class="panel-head"><div><span class="eyebrow">CUSTOMIZE</span><h2>Game settings</h2></div><span class="sparkle">✦</span></div>
+   <label>App icon <span class="subtle">(choose from gallery)</span><input id="iconPicker" type="file" accept="image/*"><div class="icon-preview"><img id="iconPreview" alt="App icon preview"><span id="iconStatus">Default app icon</span></div></label>
+   <label>Game title<input id="gameTitle" maxlength="32" value="Untitled adventure"></label>
+   <label>APK app name<input id="appName" maxlength="24" value="My 2D Game"></label>
+   <div class="two-fields"><label>World color<input type="color" id="bgColor" value="#111b32"></label><label>Player color<input type="color" id="playerColor" value="#8b7cff"></label></div>
+   <label>World theme<select id="theme"><option value="neon">Neon night</option><option value="sunset">Sunset</option><option value="forest">Forest</option><option value="ice">Ice world</option></select></label>
+   <label>Platform layout<select id="layout"><option value="normal">Classic platforms</option><option value="wide">Wide platforms</option><option value="gaps">Jump challenge</option></select></label>
+   <div class="tip"><span>✧</span><div><b>Creator tip</b><p>Try different colors and layouts, then hit Play preview to test your level.</p></div></div>
+   <button class="primary full" id="saveBtn">Save project <span>→</span></button>
+  </aside>
+ </div>
+ <div class="feature-row"><div class="feature"><span>🎮</span><div><b>2D only</b><small>Simple side-scrolling games</small></div></div><div class="feature"><span>📱</span><div><b>Mobile controls</b><small>Joystick + jump included</small></div></div><div class="feature"><span>⌨️</span><div><b>Keyboard ready</b><small>A / D or S / D + Space</small></div></div></div>
+</section>
+<section class="view" id="projectsView">
+ <div class="page-heading"><div><div class="eyebrow">YOUR LIBRARY</div><h1>Saved <span>projects.</span></h1><p>Your creations are stored in this browser.</p></div><button class="primary" id="projectNewBtn">＋ New project</button></div>
+ <div id="projectsList" class="project-grid"></div>
+ <div class="info-banner"><span>⚙</span><div><b>How APK downloads work</b><p>Choose <b>Build APK</b> on a saved project to download an Android build kit. Upload its files to a GitHub repository, then run the included <b>Build Android APK</b> workflow. GitHub will provide your APK as an artifact.</p></div></div>
+</section>
+<section class="view" id="profileView">
+ <div class="page-heading"><div><div class="eyebrow">YOUR CREATOR ID</div><h1>Creator <span>profile.</span></h1><p>Make your studio feel like yours.</p></div></div>
+ <div class="profile-layout panel"><div class="profile-preview"><div class="big-avatar" id="bigAvatar">N</div><h2 id="profilePreviewName">New Creator</h2><p>2D GAME CREATOR</p><span class="profile-pill">✦ NerizpsGames member</span></div><div class="profile-form"><label>Display name<input id="profileName" maxlength="24" value="New Creator"></label><label>Avatar letter<input id="profileLetter" maxlength="2" value="N"></label><label>About you<textarea id="profileBio" maxlength="120" rows="3" placeholder="A little about your games..."></textarea></label><button class="primary" id="profileSave">Save profile</button></div></div>
+</section>
+<section class="view" id="settingsView"><div class="page-heading"><div><div class="eyebrow">PREFERENCES</div><h1>Studio <span>settings.</span></h1><p>Quick access to your saved work.</p></div></div><div class="panel settings-panel"><button class="setting-row" id="savedShortcut"><span>▣</span><div><b>Saved projects</b><small>Open your game library and APK build kits</small></div><strong>→</strong></button><div class="setting-row"><span>ⓘ</span><div><b>About NerizpsGames</b><small>A browser-based 2D game creation starter studio.</small></div></div></div></section>
+</main>
+</div>
+<div class="mobile-controls" id="mobileControls"><div class="dpad"><button id="leftBtn">◀</button><button id="rightBtn">▶</button></div><button class="jump-btn" id="jumpBtn">JUMP</button></div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body></html>
